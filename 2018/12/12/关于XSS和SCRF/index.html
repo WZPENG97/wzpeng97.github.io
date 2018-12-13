@@ -104,25 +104,27 @@
 
 
 
-  <meta name="description" content="客户端向服务器443端口发起请求 服务器端自己制作或者向组织申请一套数字证书，自己制作的证书需要客户端验证，向组织申请的不用。这套证书包括一对公钥和私钥。 服务端收到请求后将证书公钥传送给客户端 客户端解析证书，验证证书的有效性，包括颁发机构、过期时间等内容。若有异常则弹出警告框，否则则生成一个随机值，用公钥加密后发送给服务端。 服务端得到该用公钥加密的随机值后，用私钥解密，得到随机值作为密钥">
-<meta name="keywords" content="Note,HTTPS">
+  <meta name="description" content="在 Web 安全领域中，XSS 和 CSRF 是最常见的攻击方式。">
+<meta name="keywords" content="Note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTPS加密过程">
-<meta property="og:url" content="https://wzpeng97.github.io/2018/12/12/HTTPS加密过程/index.html">
+<meta property="og:title" content="关于XSS和SCRF">
+<meta property="og:url" content="https://wzpeng97.github.io/2018/12/12/关于XSS和SCRF/index.html">
 <meta property="og:site_name" content="WZPENG x BLOG">
-<meta property="og:description" content="客户端向服务器443端口发起请求 服务器端自己制作或者向组织申请一套数字证书，自己制作的证书需要客户端验证，向组织申请的不用。这套证书包括一对公钥和私钥。 服务端收到请求后将证书公钥传送给客户端 客户端解析证书，验证证书的有效性，包括颁发机构、过期时间等内容。若有异常则弹出警告框，否则则生成一个随机值，用公钥加密后发送给服务端。 服务端得到该用公钥加密的随机值后，用私钥解密，得到随机值作为密钥">
+<meta property="og:description" content="在 Web 安全领域中，XSS 和 CSRF 是最常见的攻击方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-12T12:52:33.465Z">
+<meta property="og:image" content="https://wzpeng97.github.io/2018/12/12/关于XSS和SCRF/1544620688923.png">
+<meta property="og:updated_time" content="2018-12-13T02:26:33.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTPS加密过程">
-<meta name="twitter:description" content="客户端向服务器443端口发起请求 服务器端自己制作或者向组织申请一套数字证书，自己制作的证书需要客户端验证，向组织申请的不用。这套证书包括一对公钥和私钥。 服务端收到请求后将证书公钥传送给客户端 客户端解析证书，验证证书的有效性，包括颁发机构、过期时间等内容。若有异常则弹出警告框，否则则生成一个随机值，用公钥加密后发送给服务端。 服务端得到该用公钥加密的随机值后，用私钥解密，得到随机值作为密钥">
+<meta name="twitter:title" content="关于XSS和SCRF">
+<meta name="twitter:description" content="在 Web 安全领域中，XSS 和 CSRF 是最常见的攻击方式。">
+<meta name="twitter:image" content="https://wzpeng97.github.io/2018/12/12/关于XSS和SCRF/1544620688923.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://wzpeng97.github.io/2018/12/12/HTTPS加密过程/">
+  <link rel="canonical" href="https://wzpeng97.github.io/2018/12/12/关于XSS和SCRF/">
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>HTTPS加密过程 | WZPENG x BLOG</title>
+  <title>关于XSS和SCRF | WZPENG x BLOG</title>
   
 
 
@@ -347,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wzpeng97.github.io/2018/12/12/HTTPS加密过程/">
+    <link itemprop="mainEntityOfPage" href="https://wzpeng97.github.io/2018/12/12/关于XSS和SCRF/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wzpeng">
@@ -364,7 +366,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">HTTPS加密过程
+          <h2 class="post-title" itemprop="name headline">关于XSS和SCRF
 
               
             
@@ -390,12 +392,24 @@
                 
               
 
-              <time title="创建时间：2018-12-12 20:30:39 / 修改时间：20:52:33" itemprop="dateCreated datePublished" datetime="2018-12-12T20:30:39+08:00">2018-12-12</time>
+              <time title="创建时间：2018-12-12 21:06:57" itemprop="dateCreated datePublished" datetime="2018-12-12T21:06:57+08:00">2018-12-12</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-13 10:26:33" itemprop="dateModified" datetime="2018-12-13T10:26:33+08:00">2018-12-13</time>
               
             
           </span>
@@ -412,7 +426,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/安全/" itemprop="url" rel="index"><span itemprop="name">安全</span></a></span>
 
                 
                 
@@ -446,15 +460,62 @@
       
 
       
-        <ol>
-<li>客户端向服务器443端口发起请求</li>
-<li>服务器端自己制作或者向组织申请一套数字证书，自己制作的证书需要客户端验证，向组织申请的不用。这套证书包括一对公钥和私钥。</li>
-<li>服务端收到请求后将证书公钥传送给客户端</li>
-<li>客户端解析证书，验证证书的有效性，包括颁发机构、过期时间等内容。若有异常则弹出警告框，否则则生成一个随机值，用公钥加密后发送给服务端。</li>
-<li>服务端得到该用公钥加密的随机值后，用私钥解密，得到随机值作为密钥</li>
-<li>服务端用该密钥进行对称加密，然后发给客户端</li>
-<li>客户端通过生成的密钥解密信息，完成整个过程</li>
-</ol>
+        <p>在 Web 安全领域中，XSS 和 CSRF 是最常见的攻击方式。</p>
+<a id="more"></a>
+<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><p>XSS，即 Cross Site Script，跨站脚本攻击。</p>
+<p>指的是攻击者在网站上注入恶意的客户端代码，通过恶意脚本对客户端网页进行篡改，从而在用户浏览网页时，对用户浏览器进行控制或者获取用户隐私数据的一种攻击方式。将一些隐私数据像 cookie、session 发送给攻击者或者将受害者重定向到一个由攻击者控制的网站，在受害者的机器上进行一些恶意操作。</p>
+<h2 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h2><p>XSS攻击分为3类：反射型（非持久型）、存储型（持久型）、基于DOM</p>
+<h3 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h3><p>诱使用户点击一个恶意链接，或者提交表单，将用户数据发送给服务端，如下：</p>
+<p><img src="1544620688923.png" alt="1544620688923"></p>
+<p>链接指向一个地址，此时请求会发送到服务器，服务器接受请求，获取到用户的数据且可以在客户端浏览器执行脚本（如注入能获取用户隐私数据的脚本）</p>
+<h3 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h3><p>将用户输入的非法数据存放在服务器中，当其他用户请求数据时，会执行该用户上传的非法脚本。</p>
+<p>例如攻击者在论坛中发表包含js代码的文章或者评论，其他访问者浏览该页面时都会执行这段脚本</p>
+<h3 id="基于DOM"><a href="#基于DOM" class="headerlink" title="基于DOM"></a>基于DOM</h3><p>基于 DOM 的 XSS 攻击是指通过恶意脚本修改页面的 DOM 结构，是纯粹发生在客户端的攻击。</p>
+<p>与反射型XSS很类似，可以诱使用户向攻击者发送请求然后劫持用户的请求并执行修改DOM的脚本以完成攻击者的目的。</p>
+<h1 id="XSS攻击的防范"><a href="#XSS攻击的防范" class="headerlink" title="XSS攻击的防范"></a>XSS攻击的防范</h1><ul>
+<li><p>使用HttpOnly防止劫取Cookie</p>
+<p>设置了HttpOnly=true的Cookie无法通过js获取，通过设置HttpOnly可以防止攻击者窃取用户的Cookie信息，这些Cookie只能在服务端被使用。</p>
+</li>
+<li><p>输入检查</p>
+<p>对用户输入的数据要进行检查、过滤和转义。对于不可信任的字符和标签进行过滤和转义，一般可以检查数据中是否包括<code>&lt;&gt;</code>等特殊字符，若有则可以将其过滤或者编码后再发送。</p>
+</li>
+<li><p>输出检查</p>
+<p>服务器在输出用户的数据前对该数据进行检查，同样对敏感字符和标签进行过滤和编码再输出到用户端。</p>
+</li>
+</ul>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><p>CSRF，即 Cross Site Request Forgery，跨站请求伪造，是一种劫持受信任用户向服务器发送非预期请求的攻击方式。</p>
+<p>一般为攻击者借助用户的Cookie骗取服务器信任，伪造请求发给服务器以再未授权的情况下执行一些敏感操作。</p>
+<h2 id="浏览器的-Cookie-策略"><a href="#浏览器的-Cookie-策略" class="headerlink" title="浏览器的 Cookie 策略"></a>浏览器的 Cookie 策略</h2><p>Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。Cookie 主要用于以下两个方面：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+</ul>
+<p>浏览器持有的Cookie分为两种：</p>
+<ul>
+<li>Session Cookie(会话期 Cookie)：会话期 Cookie 是最简单的Cookie，它不需要指定过期时间（Expires）或者有效期（Max-Age），它仅在会话期内有效，浏览器关闭之后它会被自动删除。</li>
+<li>Permanent Cookie(持久性 Cookie)：与会话期 Cookie 不同的是，持久性 Cookie 可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。</li>
+</ul>
+<h2 id="通过-Cookie-进行-CSRF-攻击"><a href="#通过-Cookie-进行-CSRF-攻击" class="headerlink" title="通过 Cookie 进行 CSRF 攻击"></a>通过 Cookie 进行 CSRF 攻击</h2><p>站点a，当用户删除帖子时发起get请求：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.c.com:8002/content/delete/:id</span><br></pre></td></tr></table></figure>
+<p>当用户登录后会设置关于用户认证信息的Coookie。</p>
+<p>攻击者准备一个网站：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>CSRF 攻击者准备的网站：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://www.c.com:8002/content/delete/87343"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时用户访问攻击者的网站时会发起一个删除id为87343帖子的请求，当用户重新加载a网站时会发现请求已经完成，帖子被删除了</p>
+<h2 id="CSRF-攻击的防范"><a href="#CSRF-攻击的防范" class="headerlink" title="CSRF 攻击的防范"></a>CSRF 攻击的防范</h2><ul>
+<li><p>验证码</p>
+<p>CSRF攻击通常是在用户不知情时发起网络请求，在请求前要求用户输入验证码会强制与用户进行交互。</p>
+</li>
+<li><p>Referer Check</p>
+<p>Http头中有个Referer字段，记录了该Http请求的来源地址，服务器通过检查该字段的值来判断是否为源网站发出的合法请求。该方法还能防止图片盗链行文。</p>
+</li>
+<li><p>Token验证</p>
+<p>CSRF能成功的原因在于攻击者能伪造用户的请求，用户的验证信息都存在于Cookie中，在Http中以参数的形式添加一个随机产生的Token，攻击者无法获取，通过服务器验证Token来验证用户可以防止攻击者伪造请求。</p>
+</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="http://web.jobbole.com/94931/" target="_blank" rel="noopener">浅说 XSS 和 CSRF</a></li>
+</ul>
 
       
     </div>
@@ -480,8 +541,6 @@
           
             <a href="/tags/Note/" rel="tag"># Note</a>
           
-            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
-          
         </div>
       
 
@@ -493,8 +552,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/12/HTML5中的History-API/" rel="next" title="HTML5中的History API">
-                <i class="fa fa-chevron-left"></i> HTML5中的History API
+              <a href="/2018/12/12/HTTPS加密过程/" rel="next" title="HTTPS加密过程">
+                <i class="fa fa-chevron-left"></i> HTTPS加密过程
               </a>
             
           </div>
@@ -503,8 +562,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/12/关于XSS和SCRF/" rel="prev" title="关于XSS和SCRF">
-                关于XSS和SCRF <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/12/tset/" rel="prev" title="tset">
+                tset <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -550,8 +609,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -657,6 +725,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS分类"><span class="nav-number">1.1.</span> <span class="nav-text">XSS分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反射型"><span class="nav-number">1.1.1.</span> <span class="nav-text">反射型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储型"><span class="nav-number">1.1.2.</span> <span class="nav-text">存储型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于DOM"><span class="nav-number">1.1.3.</span> <span class="nav-text">基于DOM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS攻击的防范"><span class="nav-number">2.</span> <span class="nav-text">XSS攻击的防范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF"><span class="nav-number">3.</span> <span class="nav-text">CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器的-Cookie-策略"><span class="nav-number">3.1.</span> <span class="nav-text">浏览器的 Cookie 策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-Cookie-进行-CSRF-攻击"><span class="nav-number">3.2.</span> <span class="nav-text">通过 Cookie 进行 CSRF 攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-攻击的防范"><span class="nav-number">3.3.</span> <span class="nav-text">CSRF 攻击的防范</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
